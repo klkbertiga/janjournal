@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The January Journal – Essays & Dissections</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #F1E9D2;
+      background-image: radial-gradient(circle at 25% 40%, rgba(210, 190, 150, 0.08) 2%, transparent 2.5%),
+                        radial-gradient(circle at 70% 85%, rgba(160, 130, 90, 0.06) 1.8%, transparent 2.2%);
+      background-size: 48px 48px, 32px 32px;
+      font-family: 'Newsreader', 'Georgia', 'Times New Roman', serif;
+      color: #2C241A;
+      line-height: 1.55;
+      padding: 2rem 1.5rem;
+    }
+
+    .journal-container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: rgba(250, 245, 235, 0.65);
+      border-radius: 28px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 245, 0.8);
+      padding: 2rem 1.8rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 1rem;
+      }
+      .journal-container {
+        padding: 1.5rem;
+      }
+    }
+
+    .journal-header {
+      text-align: center;
+      border-bottom: 2px solid #DBCEAC;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .journal-logo {
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+    .journal-logo:hover {
+      transform: scale(1.01);
+    }
+
+    .journal-header h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2F2419;
+      font-family: 'Newsreader', serif;
+      text-shadow: 2px 2px 0 rgba(180, 150, 100, 0.15);
+      word-break: keep-all;
+      margin-top: 0.25rem;
+    }
+
+    .journal-header h1::before {
+      content: "✍️";
+      font-size: 2.4rem;
+      margin-right: 10px;
+      opacity: 0.7;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .journal-header h1::after {
+      content: "📖";
+      font-size: 2.2rem;
+      margin-left: 10px;
+      opacity: 0.7;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .subhead {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #7A684A;
+      margin-top: 6px;
+      border-top: 1px dashed #DBCEAC;
+      display: inline-block;
+      padding-top: 8px;
+    }
+
+    .journal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #E5D9BF;
+      padding-bottom: 0.8rem;
+    }
+
+    .essay-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      background: #E7DEC8;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      color: #4F3E2C;
+    }
+
+    .essays-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .essay-card {
+      background: #FEFAF0;
+      border-radius: 24px;
+      padding: 1.5rem 1.8rem;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid #EADDBE;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+
+    .essay-card:hover {
+      transform: translateY(-3px);
+      border-color: #D1BF94;
+      box-shadow: 0 14px 26px -12px rgba(70, 50, 30, 0.2);
+      background: #FFFCF3;
+    }
+
+    .essay-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #2F2419;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      font-family: 'Newsreader', serif;
+    }
+
+    .essay-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: #8F7A59;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.9rem;
+      border-left: 3px solid #DCCFAD;
+      padding-left: 10px;
+    }
+
+    .essay-excerpt {
+      color: #3F3324;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .read-more {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: #7D623C;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid #D9C8A8;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: #9A8A6A;
+      border-top: 1px solid #E2D4BB;
+      padding-top: 1.8rem;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: #E2D4BB;
+      margin: 1rem 0;
+    }
+
+    .journal-container::after {
+      content: "";
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(100,70,40,0.03) 0%, rgba(80,60,35,0) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+<div class="journal-container">
+  <div class="journal-header">
+    <!-- Make sure you have the file "The January journal.png" in the same folder as this HTML -->
+    <img class="journal-logo" src="The January journal.png" alt="The January Journal logo" onerror="this.style.display='none'">
+    <h1>{{ site.title }}</h1>
+    <div class="subhead">DISSECTING IDEAS • WRITTEN REFLECTIONS • INK & PARCHMENT</div>
+  </div>
+
+  <div class="journal-nav">
+    <div></div>
+    <div class="essay-count">📓 {{ site.posts | size }} essays • dissections</div>
+  </div>
+
+  <div class="essays-grid">
+    {% for post in site.posts %}
+      <div class="essay-card" onclick="location.href='{{ post.url }}'">
+        <div class="essay-title">{{ post.title }}</div>
+        <div class="essay-meta">
+          <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
+          <span>✍️ ~{{ post.content | number_of_words | divided_by: 180 | ceil }} min read</span>
+        </div>
+        <div class="essay-excerpt">
+          {% if post.description %}
+            {{ post.description | strip_html | truncatewords: 30 }}
+          {% else %}
+            {{ post.excerpt | strip_html | truncatewords: 30 }}
+          {% endif %}
+        </div>
+        <div class="read-more">⟶ read full dissection</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <footer>
+    <span>📜 A journal for relentless curiosity — new essays appear by adding a file to _posts/.</span><br>
+    <span style="font-size:0.7rem;">✍️ The January Journal · ever unfolding</span>
+  </footer>
+</div>
+</body>
+</html>
