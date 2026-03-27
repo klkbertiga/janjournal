@@ -78,24 +78,6 @@
       margin-top: 0.25rem;
     }
 
-    .journal-header h1::before {
-      content: "✍️";
-      font-size: 2.4rem;
-      margin-right: 10px;
-      opacity: 0.7;
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .journal-header h1::after {
-      content: "📖";
-      font-size: 2.2rem;
-      margin-left: 10px;
-      opacity: 0.7;
-      display: inline-block;
-      vertical-align: middle;
-    }
-
     .subhead {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
@@ -234,7 +216,7 @@
 
   <div class="journal-nav">
     <div></div>
-    <div class="essay-count">📓 {{ site.posts | size }} essays • dissections</div>
+    <div class="essay-count">{{ site.posts | size }} essays • dissections</div>
   </div>
 
   <div class="essays-grid">
@@ -242,8 +224,8 @@
       <div class="essay-card" onclick="location.href='{{ site.baseurl }}{{ post.url }}'">
         <div class="essay-title">{{ post.title }}</div>
         <div class="essay-meta">
-          <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
-          <span>✍️ ~{{ post.content | number_of_words | divided_by: 180 | ceil }} min read</span>
+          <span>{{ post.date | date: "%B %d, %Y" }}</span>
+          <span>~{{ post.content | number_of_words | divided_by: 180 | ceil }} min read</span>
         </div>
         <div class="essay-excerpt">
           {% if post.description %}
@@ -258,8 +240,8 @@
   </div>
 
   <footer>
-    <span>📜 A journal for relentless curiosity — new essays appear by adding a file to _posts/.</span><br>
-    <span style="font-size:0.7rem;">✍️ The January Journal · ever unfolding</span>
+    <span>A journal for relentless curiosity — new essays appear by adding a file to _posts/.</span><br>
+    <span>The January Journal · ever unfolding</span>
   </footer>
 </div>
 </body>
