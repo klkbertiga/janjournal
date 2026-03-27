@@ -239,7 +239,7 @@
 
   <div class="essays-grid">
     {% for post in site.posts %}
-      <div class="essay-card" onclick="location.href='{{ post.url }}'">
+      <div class="essay-card" onclick="location.href='{{ site.baseurl }}{{ post.url }}'">
         <div class="essay-title">{{ post.title }}</div>
         <div class="essay-meta">
           <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
